@@ -1,0 +1,47 @@
+{% extends 'base.html' %} {% load static %} {% block head %}
+<link
+  rel="stylesheet"
+  href="{% static 'css/stickers/sticker-index.css' %}"
+/>
+{% endblock %} {% block content %}
+
+<section class="page-header">
+<h1>Sticker Collection</h1>
+    {% comment %} <img
+    src="{% static 'image' %}"
+    alt="A cool cat"
+  />
+  <img
+    src="{% static '' %}"
+    alt="A happy cat"
+  />
+  <img
+    src="{% static '' %}"
+    alt="A cat in a teacup"
+  />
+  <img
+    src="{% static '' %}"
+    alt="A cat in a box"
+  /> {% endcomment %}
+</section>
+
+<section class="card-container">
+  {% for sticker in stickers %}
+  <div class="card">
+    <div class="card-content">
+      <div class="card-img-container">
+        <img
+          src="{% static '' %}"
+          alt=""
+        />
+      </div>
+      <h2 class="card-title">{{ sticker.name }}</h2>
+      <p>A {{ sticker.shape }}</p>
+      <p>A {{ sticker.brand }}</p>
+      <p><small>{{ sticker.description }}</small></p>
+    </div>
+  </div>
+  {% endfor %}
+</section>
+
+{% endblock %}
