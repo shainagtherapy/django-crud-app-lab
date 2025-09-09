@@ -5,4 +5,5 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('about/', views.about, name='about'),
     path('stickers/', views.sticker_index, name='sticker-index'),
+    path('stickers/<int:sticker_id>/', views.sticker_detail, name='sticker-detail'),
 ]
