@@ -1,0 +1,18 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/stickerbooks/stickerbook-detail.css' %}" />
+{% endblock %} 
+{% block content %}
+<section class="stickerbook-container">
+  <div class="stickerbook-img">
+    <img src="{% static 'images/sk8r-boi-cat.svg' %}" alt="A skater boy cat" />
+  </div>
+  <div class="stickerbook-details">
+    <h1>{{ stickerbook.name }}</h1>
+    <h2>{{ stickerbook.date }}</h2>
+    <h2>{{ stickerbook.age }}</h2>
+    
+  </div>
+</section>
+{% endblock %}

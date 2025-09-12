@@ -1,4 +1,4 @@
-.sticker-container {
+.stickerbook-container {
   padding: 35px 30px;
   display: flex;
   flex-direction: column;
@@ -6,7 +6,7 @@
   justify-content: center;
 }
 
-.sticker-img {
+.stickerbook-img {
   width: 75%;
   max-width: 350px;
 }
@@ -16,11 +16,11 @@
   border-radius: var(--card-border-radius);
 }
 
-.sticker-details {
+.stickerbook-details {
   width: 98%;
 }
 
-.sticker-actions {
+.stickerbook-actions {
   margin-top: 20px;
 }
 
@@ -72,24 +72,24 @@
   color: var(--submit);
 }
 
-.sticker-details h1 {
+.stickerbook-details h1 {
   font-size: var(--font-xxl);
   margin: 15px 0 3px;
 }
 
-.sticker-details h2 {
+.stickerbook-details h2 {
   font-size: var(--font-xl);
   margin: 0 0 10px;
   margin-top: 0;
   margin-bottom: 10px;
 }
 
-.sticker-details h3 {
+.stickerbook-details h3 {
   margin: 20px 0 10px;
   font-size: var(--font-l);
 }
 
-.sticker-details p {
+.stickerbook-details p {
   font-size: var(--font-reg);
   margin: 5px 0;
 }
@@ -188,14 +188,14 @@
 }
 
 @media only screen and (min-width: 768px) {
-  .sticker-container {
+  .stickerbook-container {
     padding: 35px 30px;
     flex-direction: row;
     align-items: center;
     justify-content: start;
   }
 
-  .sticker-img {
+  .stickerbook-img {
     width: 25%;
     max-width: 250px;
     margin-right: 25px;

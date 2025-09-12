@@ -23,8 +23,8 @@ main > section {
   max-width: 375px;
 }
 
-.cat-container {
-  width: 80%;
+.stickerbook-container {
+  max-width: 400px;
 }
 
 .login {
@@ -63,6 +63,7 @@ main > section {
   margin-top: 16px;
 }
 
+
 @media only screen and (min-width: 768px) {
   main {
     justify-content: space-around;
@@ -80,7 +81,8 @@ main > section {
     width: 100%;
   }
 
-  .logo-container {
-    max-width: 520px;
-  }
+  .stickerbooklogo {
+  width: 600px;
+}
+
 }

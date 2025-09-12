@@ -20,6 +20,10 @@ html {
   font-size: 62.5%;
 }
 
+.header-logo {
+  width: 100%;
+}
+
 body {
   margin: 0;
   display: flex;
@@ -102,6 +106,10 @@ nav li {
   max-width: 500px;
 }
 
+.header-logo {
+  width: 100%;
+}
+
 .page-header {
   display: flex;
   align-items: center;
@@ -164,6 +172,10 @@ nav li {
   font-size: var(--font-reg);
 }
 
+.header-logo {
+  width: 100% !important;
+}
+
 @media only screen and (min-width: 768px) {
   header {
     position: sticky;
@@ -171,6 +183,10 @@ nav li {
     flex-direction: row;
     top: 0;
     align-items: center;
+  }
+
+  .header-logo {
+    width: 100%;
   }
 
   main {
@@ -242,8 +258,7 @@ nav li {
   nav,
   .header-logo-container {
     margin: 0;
-    background: var(--nav-bg-ff);
-    border: var(--borders);
+
     border-radius: 18px;
   }
 
@@ -251,11 +266,17 @@ nav li {
     margin-left: auto;
   }
 
-  .header-logo-container {
-    /* visual fix to help align logo */
-    padding-top: 6px;
+  /* .header-logo-container { */
+    /* visual fix to help align logo*************************************** */
+    /* padding-top: 6px;
     width: 256px;
     height: 35px;
+  } */
+
+  .header-logo {
+  max-width: 100%;
+  height: auto;
+  display: block;
   }
 
   @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {

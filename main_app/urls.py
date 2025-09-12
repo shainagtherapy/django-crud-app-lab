@@ -4,6 +4,7 @@ from . import views # Import views to connect routes to view functions
 urlpatterns = [
     path('', views.home, name='home'),
     path('about/', views.about, name='about'),
-    path('stickers/', views.sticker_index, name='sticker-index'),
-    path('stickers/<int:sticker_id>/', views.sticker_detail, name='sticker-detail'),
+    path('stickerbooks/', views.stickerbook_index, name='stickerbook-index'),
+    path('stickerbooks/<int:stickerbook_id>/', views.stickerbook_detail, name='stickerbook-detail'),
+
 ]

@@ -1,12 +1,12 @@
 {% extends 'base.html' %} {% load static %} {% block head %}
 <link
   rel="stylesheet"
-  href="{% static 'css/stickers/sticker-index.css' %}"
+  href="{% static 'css/stickerbooks/stickerbook-index.css' %}"
 />
 {% endblock %} {% block content %}
 
 <section class="page-header">
-<h1>Sticker Collection</h1>
+<h1>All Stickerbooks</h1>
     {% comment %} <img
     src="{% static 'image' %}"
     alt="A cool cat"
@@ -26,9 +26,9 @@
 </section>
 
 <section class="card-container">
-  {% for sticker in stickers %}
+  {% for stickerbook in stickerbooks %}
   <div class="card">
-    <a href="/stickers/{{ sticker.id }}">
+    <a href="/stickerbooks/{{ stickerbook.id }}">
       <div class="card-content">
         <div class="card-img-container">
           <img
@@ -36,10 +36,10 @@
             alt=""
           />
         </div>
-        <h2 class="card-title">{{ sticker.name }}</h2>
-        <p>{{ sticker.shape }}</p>
-        <p>{{ sticker.brand }}</p>
-        <p><small>{{ sticker.description }}</small></p>
+        <h2 class="card-title">{{ stickerbook.name }}</h2>
+        <p>{{ stickerbook.date }}</p>
+        <p>{{ stickerbook.age }}</p>
+        <p><small>{{ stickerbook.description }}</small></p>
       </div>
     </a>
   </div>

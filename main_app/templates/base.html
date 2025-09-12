@@ -15,14 +15,14 @@
   <body>
     <header>
       <div class="header-logo-container">
-        <a href="/">
+        <a class href="/">
         {% comment %} <img src="{% static 'images/header-logo.svg' %}" alt="The Cat Collector Logo" /> *****placeholder for fancy logo {% endcomment %}
-        <img src="" alt="Stickerbook Main Logo" />
+        <img class ="header-logo" src="{% static 'images/toolbarlogo.png' %}" alt="Stickerbook Main Logo" />
         </a>
       </div>
       <nav>
         <ul>
-            <li><a href="{% url 'sticker-index' %}">All My Stickers</a></li>
+            <li><a href="{% url 'stickerbook-index' %}">All Stickerbooks</a></li>
             <li><a href="{% url 'about' %}">About</a></li>
         </ul>
       </nav>
