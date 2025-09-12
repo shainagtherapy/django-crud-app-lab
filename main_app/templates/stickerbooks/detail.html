@@ -6,12 +6,17 @@
 {% block content %}
 <section class="stickerbook-container">
   <div class="stickerbook-img">
-    <img src="{% static 'images/sk8r-boi-cat.svg' %}" alt="A skater boy cat" />
+    <img src="{% static 'images/stickerbookhomelogo.png' %}" alt="iconlogo" />
   </div>
   <div class="stickerbook-details">
     <h1>{{ stickerbook.name }}</h1>
     <h2>{{ stickerbook.date }}</h2>
-    <h2>{{ stickerbook.age }}</h2>
+    <h2>{{ stickerbook.description }}</h2>
+
+    <div class="stickerbook-actions">
+      <a href="{% url 'stickerbook-update' stickerbook.id %}" class="btn warn">Edit</a>
+      <a href="{% url 'stickerbook-delete' stickerbook.id %}" class="btn danger">Delete</a>
+    </div>
     
   </div>
 </section>

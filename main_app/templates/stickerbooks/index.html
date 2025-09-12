@@ -7,38 +7,22 @@
 
 <section class="page-header">
 <h1>All Stickerbooks</h1>
-    {% comment %} <img
-    src="{% static 'image' %}"
-    alt="A cool cat"
-  />
-  <img
-    src="{% static '' %}"
-    alt="A happy cat"
-  />
-  <img
-    src="{% static '' %}"
-    alt="A cat in a teacup"
-  />
-  <img
-    src="{% static '' %}"
-    alt="A cat in a box"
-  /> {% endcomment %}
+
 </section>
 
 <section class="card-container">
   {% for stickerbook in stickerbooks %}
   <div class="card">
-    <a href="/stickerbooks/{{ stickerbook.id }}">
+    <a href="{% url 'stickerbook-detail' stickerbook.id %}">
       <div class="card-content">
         <div class="card-img-container">
           <img
-            src="{% static '' %}"
-            alt=""
+            src="{% static 'images/stickerbookhomelogo.png' %}" class="indexlogo"
+            alt="Stickerbook Logo"
           />
         </div>
         <h2 class="card-title">{{ stickerbook.name }}</h2>
         <p>{{ stickerbook.date }}</p>
-        <p>{{ stickerbook.age }}</p>
         <p><small>{{ stickerbook.description }}</small></p>
       </div>
     </a>

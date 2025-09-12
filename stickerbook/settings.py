@@ -69,7 +69,7 @@ WSGI_APPLICATION = 'stickerbook.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.postgresql', 
         'NAME': 'stickerbook',
     }
 }
@@ -115,3 +115,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# to include images:
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
