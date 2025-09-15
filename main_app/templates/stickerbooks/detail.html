@@ -31,9 +31,9 @@
         {% csrf_token %}
         {{ sticker_form.as_p }}
         <button type="submit" class="btn submit">Add Sticker</button>
-      <ul>
+      <ul class="stickers">
         {% for sticker in stickerbook.sticker_set.all %}
-        <li><img src="{{ sticker.original_url }}"></li>
+        <li class="indstickers"><img src="{{ sticker.original_url }}"></li>
         {% endfor %}
       </ul>
     </body>
