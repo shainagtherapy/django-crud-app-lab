@@ -9,19 +9,27 @@ from .models import Stickerbook, Sticker
 from .forms import StickerForm
 from django.shortcuts import render, redirect
 from django.contrib.auth.views import LoginView
+from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 class Home(LoginView):
     template_name = 'home.html'
 
-class StickerbookCreate(CreateView):
+class StickerbookCreate(LoginRequiredMixin, CreateView):
     model = Stickerbook
     fields = '__all__'
 
-class StickerbookUpdate(UpdateView):
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
+class StickerbookUpdate(LoginRequiredMixin, UpdateView):
     model = Stickerbook
     fields = '__all__'
 
-class StickerbookDelete(DeleteView):
+class StickerbookDelete(LoginRequiredMixin, DeleteView):
     model = Stickerbook
     success_url = '/stickerbooks/'
 
@@ -34,15 +42,18 @@ def home(request):
 def about(request):
     return render(request, 'about.html')
 
+@login_required
 def stickerbook_index(request):
-    stickerbooks = Stickerbook.objects.all()
+    stickerbooks = Stickerbook.objects.filter(user=request.user)
     return render(request, 'stickerbooks/index.html', {'stickerbooks': stickerbooks})
 
+@login_required
 def stickerbook_detail(request, stickerbook_id):
     stickerbook = Stickerbook.objects.get(id=stickerbook_id)
     sticker_form = StickerForm()
     return render(request, 'stickerbooks/detail.html', {'stickerbook': stickerbook, 'sticker_form' : sticker_form })
 
+@login_required
 def add_sticker(request, stickerbook_id):
     form = StickerForm(request.POST)
 
@@ -51,6 +62,21 @@ def add_sticker(request, stickerbook_id):
         new_sticker.stickerbook_id = stickerbook_id
         new_sticker.save()
     return redirect('stickerbook-detail', stickerbook_id=stickerbook_id)
+
+def signup(request):
+    error_message = ''
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('stickerbook-index')
+        else:
+            error_message = 'Invalid sign up - try again'
+    form = UserCreationForm()
+    context = {'form': form, 'error_message': error_message}
+    return render(request, 'signup.html', context)
+
 
 
 # Beginnings of GIPHY API integration:

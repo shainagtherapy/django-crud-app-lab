@@ -16,15 +16,24 @@
     <header>
       <div class="header-logo-container">
         <a class href="/">
-        {% comment %} <img src="{% static 'images/header-logo.svg' %}" alt="The Cat Collector Logo" /> *****placeholder for fancy logo {% endcomment %}
         <img class ="header-logo" src="{% static 'images/toolbarlogo.png' %}" alt="Stickerbook Main Logo" />
         </a>
       </div>
       <nav>
         <ul>
+          {% if user.is_authenticated %}
             <li><a href="{% url 'stickerbook-index' %}">All Stickerbooks</a></li>
             <li><a href="{% url 'stickerbook-create' %}">Add a Stickerbook</a></li>
             <li><a href="{% url 'about' %}">About</a></li>
+            <li><form id="logout-form" method="post" action="{% url 'logout' %}">{% csrf_token %}
+                <button type="submit">Log out</button>
+                </form>
+            </li>
+          {% else %}
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="{% url 'home' %}">Login</a></li>
+            <li><a href="{% url 'signup' %}">Sign Up</a></li>
+          {% endif %}
         </ul>
       </nav>
     </header>
