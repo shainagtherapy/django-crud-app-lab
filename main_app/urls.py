@@ -9,4 +9,5 @@ urlpatterns = [
     path('stickerbooks/create/', views.StickerbookCreate.as_view(), name='stickerbook-create'),
     path('stickerbooks/<int:pk>/update/', views.StickerbookUpdate.as_view(), name='stickerbook-update'),
     path('stickerbooks/<int:pk>/delete/', views.StickerbookDelete.as_view(), name='stickerbook-delete'),
+    path('stickerbooks/<int:stickerbook_id>/add-sticker/', views.add_sticker, name='add-sticker'),
 ]

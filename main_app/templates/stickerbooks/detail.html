@@ -6,7 +6,7 @@
 {% block content %}
 <section class="stickerbook-container">
   <div class="stickerbook-img">
-    <img src="{% static 'images/stickerbookhomelogo.png' %}" alt="iconlogo" />
+    <img src="{% static 'images/stickerbookhomelogo.png' %}" class ="usr-img" alt="iconlogo" />
   </div>
   <div class="stickerbook-details">
     <h1>{{ stickerbook.name }}</h1>
@@ -20,4 +20,24 @@
     
   </div>
 </section>
+
+<div class="stickers-container">
+  <section class = "stickers">
+    <div class="subsection-title">
+      <h2>Stickers Collected:</h2>
+    </div>
+    <body>
+      <form action="{% url 'add-sticker' stickerbook.id %}" method="post" class="subsection-content" autocomplete="off">
+        {% csrf_token %}
+        {{ sticker_form.as_p }}
+        <button type="submit" class="btn submit">Add Sticker</button>
+      <ul>
+        {% for sticker in stickerbook.sticker_set.all %}
+        <li><img src="{{ sticker.original_url }}"></li>
+        {% endfor %}
+      </ul>
+    </body>
+  </section>
+</div>
+
 {% endblock %}

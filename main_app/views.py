@@ -6,6 +6,8 @@ from django.views.decorators.http import require_GET
 from django.shortcuts import render
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Stickerbook, Sticker
+from .forms import StickerForm
+from django.shortcuts import render, redirect
 
 class StickerbookCreate(CreateView):
     model = Stickerbook
@@ -32,8 +34,17 @@ def stickerbook_index(request):
 
 def stickerbook_detail(request, stickerbook_id):
     stickerbook = Stickerbook.objects.get(id=stickerbook_id)
-    return render(request, 'stickerbooks/detail.html', {'stickerbook': stickerbook})
+    sticker_form = StickerForm()
+    return render(request, 'stickerbooks/detail.html', {'stickerbook': stickerbook, 'sticker_form' : sticker_form })
 
+def add_sticker(request, stickerbook_id):
+    form = StickerForm(request.POST)
+
+    if form.is_valid():
+        new_sticker = form.save(commit=False)
+        new_sticker.stickerbook_id = stickerbook_id
+        new_sticker.save()
+    return redirect('stickerbook-detail', stickerbook_id=stickerbook_id)
 
 
 # Beginnings of GIPHY API integration:
