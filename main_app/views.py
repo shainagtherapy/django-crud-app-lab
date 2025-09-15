@@ -8,6 +8,10 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Stickerbook, Sticker
 from .forms import StickerForm
 from django.shortcuts import render, redirect
+from django.contrib.auth.views import LoginView
+
+class Home(LoginView):
+    template_name = 'home.html'
 
 class StickerbookCreate(CreateView):
     model = Stickerbook
@@ -20,6 +24,8 @@ class StickerbookUpdate(UpdateView):
 class StickerbookDelete(DeleteView):
     model = Stickerbook
     success_url = '/stickerbooks/'
+
+
 
 # Define the home view function
 def home(request):
